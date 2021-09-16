@@ -193,7 +193,7 @@ async def downloaderACNH():
 
 
     if os.path.exists("./files/snow"):
-        os.remove("./files/snow")
+        os.removedirs("./files/snow")
         os.makedirs("./files/snow")
 
     for i in range(13):
@@ -226,11 +226,6 @@ def downloaderRen(weather):
     os.rename(f"./files/{weather}/7.mp3", f"./files/{weather}/07.mp3")
     os.rename(f"./files/{weather}/8.mp3", f"./files/{weather}/08.mp3")
     os.rename(f"./files/{weather}/9.mp3", f"./files/{weather}/09.mp3")
-
-def resetOST():
-    print("Resetting Files...")
-    os.remove("./files")
-    return
 
 if __name__ == "__main__":
     loop = asyncio.get_event_loop()
