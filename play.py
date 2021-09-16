@@ -239,7 +239,7 @@ if __name__ == "__main__":
         loop.run_until_complete(downloaderACNH())
         loop.run_until_complete(downloaderACNL())
     except KeyboardInterrupt:
-        print("\nExiting program...")
+        print("\n\nExiting program...")
         try:
             sys.exit(0)
         except SystemExit:

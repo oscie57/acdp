@@ -16,7 +16,7 @@ Here is a video demonstrating how to use: https://youtu.be/uTfuLiuBtt8
 2. Run `pip install -r requirements.txt` to install the required packages.
 3. Create a file called `.env`
 4. Inside that file, add `AREA=` and put your area afterwards.
-For example:`AREA=Madrid, Spain`
+For example: `AREA=Madrid, Spain`
 5. Make sure you have `games.txt`, `.env` and `play.py` in the **same folder!**
 
 That's it, you're all ready to go!
