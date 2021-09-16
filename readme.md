@@ -5,10 +5,10 @@ I am sure you are wondering, how does this work??
 Well, it uses a few Python packages, mainly python-weather, to determine what to play.
 If it is raining where you are, the music will have rain, same with snow or sun. It also checks the time. If it is 1am, it'll play the 1am music, and same for any other time.
 ## Space Requirements
-| Game         | Space  |
-| ------------ | ------ |
-| New Leaf     | ~1.8GB |
-| New Horizons | ~500MB |
+| Game         | Space  | Reason? |
+| ------------ | ------ | ------- |
+| New Leaf     | ~1.8GB | Currently where I get the music from, New Leaf's Clear audio tracks are 30 minutes. It is annoying since it means weather wont be able to change as often for it. |
+| New Horizons | ~500MB | No |
 ## Set-up
 1. Make sure you have Python installed! (This was tested on Python 3.8)
 2. Run `pip install -r requirements.txt` to install the required packages.
