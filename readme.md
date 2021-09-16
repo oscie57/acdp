@@ -4,6 +4,8 @@ Hey there! This is a project I've been working on called ACDP, a Python program 
 I am sure you are wondering, how does this work??
 Well, it uses a few Python packages, mainly python-weather, to determine what to play.
 If it is raining where you are, the music will have rain, same with snow or sun. It also checks the time. If it is 1am, it'll play the 1am music, and same for any other time.
+
+Here is a video demonstrating how to use: https://youtu.be/uTfuLiuBtt8
 ## Space Requirements
 | Game         | Space  | Reason? |
 | ------------ | ------ | ------- |
