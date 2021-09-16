@@ -227,11 +227,20 @@ def downloaderRen(weather):
     os.rename(f"./files/{weather}/8.mp3", f"./files/{weather}/08.mp3")
     os.rename(f"./files/{weather}/9.mp3", f"./files/{weather}/09.mp3")
 
+
+
 if __name__ == "__main__":
-    loop = asyncio.get_event_loop()
-    loop.run_until_complete(getweather())
-    loop.run_until_complete(gamecheck())
-    loop.run_until_complete(videoDL())
-    loop.run_until_complete(downloaderMain())
-    loop.run_until_complete(downloaderACNH())
-    loop.run_until_complete(downloaderACNL())
+    try:
+        loop = asyncio.get_event_loop()
+        loop.run_until_complete(getweather())
+        loop.run_until_complete(gamecheck())
+        loop.run_until_complete(videoDL())
+        loop.run_until_complete(downloaderMain())
+        loop.run_until_complete(downloaderACNH())
+        loop.run_until_complete(downloaderACNL())
+    except KeyboardInterrupt:
+        print("\nExiting program...")
+        try:
+            sys.exit(0)
+        except SystemExit:
+            os._exit(0)
