@@ -4,16 +4,11 @@ from datetime import datetime
 from pydub import AudioSegment
 from pydub.playback import play
 
-
-sys.stdout = open("out.txt", "w")
-
 load_dotenv()
 
 print("Welcome to the Animal Crossing Dynamic Player!\nThe ACDP lets you listen to Animal Crossing: New Horizons (and other games') music based on the weather and time around you.")
 
 area = str(os.getenv("AREA"))
-
-
 
 def filecheck():
     if not os.path.exists("./files"):
