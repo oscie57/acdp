@@ -68,7 +68,6 @@ async def gamecheck():
         dir = f"./files/{gameweather}/{gametime}.mp3"
 
         song = AudioSegment.from_mp3(dir)
-        song = song - 50
         play(song)
 
         
