@@ -23,5 +23,5 @@ For example: `AREA=Madrid, Spain`
 That's it, you're all ready to go!
 ## Bugs!
 If you have any bugs, please report them at the [issues page](https://github.com/scor57/ACDP/issues)!
-# Why use this / Use-Cases
+## Why use this / Use-Cases
 Apparently I have to clarify this. This can be used to play music in the background while studying, working, or doing anything really, that was the main intention.
