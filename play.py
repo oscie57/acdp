@@ -12,8 +12,6 @@ area = str(os.getenv("AREA"))
 
 def filecheck():
     if not os.path.exists("./files"):
-        print("You are missing important folders!")
-        print("Adding folders now...\n")
         os.makedirs("./files")
 
     if not os.path.exists("./files/rain"):
@@ -26,7 +24,7 @@ def filecheck():
         os.makedirs("./files/snow")
 
     if not os.path.exists(".env"):
-        print("To run, we need to use dotenv to get your location. There should be a file called '.env' in the same directory as 'play.py', please add the following:\n")
+        print("\n\nTo run, we need to use dotenv to get your location. There should be a file called '.env' in the same directory as 'play.py', please add the following:\n")
         print('"AREA=[town]"')
         print("But replace [town] with your town, for example: 'AREA=Sutton, London'\n")
         return
