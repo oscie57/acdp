@@ -17,15 +17,15 @@ init()
 
 load_dotenv()
 
-def b(text):
+def b(text: str):
     return Fore.BLUE + text + Style.RESET_ALL
-def g(text):
+def g(text: str):
     return Fore.GREEN + text + Style.RESET_ALL
-def p(text):
+def p(text: str):
     return Fore.MAGENTA + text + Style.RESET_ALL
-def o(text):
+def o(text: str):
     return Fore.ORANGE + text + Style.RESET_ALL
-def c(text):
+def c(text: str):
     return Fore.CYAN + text + Style.RESET_ALL
 
 print("Welcome to the " + p("Animal Crossing Dynamic Player") + "!\nThe " + p("ACDP") + " lets you listen to " + g("Animal Crossing: New Horizons") + " (and other games') music based around the " + b("weather") +  " and " + b("time") + " around you.")
@@ -66,6 +66,8 @@ async def getweather():
 
 
 async def gamecheck():
+    global playcount
+    playcount = 0
     filecheck()
     if not os.path.exists("./files/clear/12.mp3"):
         await downloaderMain()
@@ -84,9 +86,10 @@ async def gamecheck():
 
         gametime = datetime.now().strftime("%H")
 
-        print(f"\n\n[" + datetime.now().strftime(c('%H:%M - %d/%m')) + "] " + b(sky) + Fore.YELLOW)
+        print(Style.RESET_ALL + "\n\n[" + datetime.now().strftime(c('%H:%M - %d/%m')) + "] " + b(sky) + Fore.YELLOW)
         dir = f"./files/{gameweather}/{gametime}.mp3"
 
+        playcount = playcount + 1
         song = AudioSegment.from_mp3(dir)
         play(song)
 
@@ -260,6 +263,7 @@ if __name__ == "__main__":
         loop.run_until_complete(downloaderACNL())
     except KeyboardInterrupt:
         print(c("\n\nExiting program..."))
+        print("While using this app, you listened to the music " + b(str(playcount)) + " times!")
         try:
             sys.exit(0)
         except SystemExit:
