@@ -10,6 +10,10 @@ load_dotenv()
 print("Welcome to the Animal Crossing Dynamic Player!\nThe ACDP lets you listen to Animal Crossing: New Horizons (and other games') music based on the weather and time around you.")
 
 area = str(os.getenv("AREA"))
+games = [
+    "New Leaf",
+    "New Horizons"
+]
 
 def filecheck():
     if not os.path.exists("./files"):
@@ -28,10 +32,6 @@ def filecheck():
         print("\n\nTo run, we need to use dotenv to get your location. There should be a file called '.env' in the same directory as 'play.py', please add the following:\n")
         print('"AREA=[town]"')
         print("But replace [town] with your town, for example: 'AREA=Sutton, London'\n")
-        return
-
-    if not os.path.exists("games.txt"):
-        print("We need 'games.txt' to run! This allows you to download the OST's for this application. Please redownload it from GitHub.")
         return
     
 async def getweather():
@@ -71,16 +71,14 @@ async def gamecheck():
 
         
 async def downloaderMain():
-    with open("./games.txt", "r") as f:
-        gamesfile = f.readlines()
 
     gameslist = []
 
-    for content in gamesfile:
+    for content in games:
         gameslist.append(content.splitlines()[0])
 
 
-    print("\n\nWelcome to the ACDP (Animal Crossing Dynamic Player) music downloader!\nIf you're seeing this, chances are, you do not have the Audio files downloaded.\n\nSpace Requirements:\n - New Leaf requires ~1.8GB\n - New Horizons requires ~400MB\n")
+    print("\nWelcome to the ACDP (Animal Crossing Dynamic Player) music downloader!\nIf you're seeing this, chances are, you do not have the Audio files downloaded.\n\nSpace Requirements:\n - New Leaf requires ~1.8GB\n - New Horizons requires ~400MB\n")
     game = input("Please choose a game to download the OST: ")
     if game not in gameslist:
         print(f"That is not a valid option. Valid options include:\n{gameslist}\n")
