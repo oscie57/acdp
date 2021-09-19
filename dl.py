@@ -1,4 +1,4 @@
-import asyncio, os, sys, aiohttp
+import os, aiohttp
 
 async def videoDL(outfile, url):
     try:

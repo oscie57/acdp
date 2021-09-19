@@ -1,4 +1,4 @@
-import os, python_weather, asyncio, aiohttp, sys
+import os, python_weather, asyncio, sys
 from dotenv import load_dotenv
 from datetime import datetime
 from pydub import AudioSegment
