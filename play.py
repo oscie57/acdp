@@ -98,11 +98,12 @@ async def downloaderMain():
     for content in games:
         gameslist.append(content.splitlines()[0])
 
+    Style.RESET_ALL
 
     print("\nWelcome to the " + p("ACDP") + " (" + p("Animal Crossing Dynamic Player") + ") music downloader!\nIf you're seeing this, " + c("chances are, you do not have the Audio files downloaded.") + "\n" + c("Space Requirements:") + "\n - " + g("New Leaf") + " requires " + b("~1.8GB") + "\n - " + g("New Horizons") + " requires " + b("~400MB\n"))
-    game = input("Please " + b("choose a game") + " to download the OST: ")
+    game = input("Please " + b("choose a game") + " to download the OST: " + Fore.GREEN)
     if game not in gameslist:
-        print(f"'" + b(game) + "' is not a valid option. Valid options include:\n" + g(str(gameslist)) + "\n")
+        print(Style.RESET_ALL + "'" + b(game) + "' is not a valid option. Valid options include:\n" + g(str(gameslist)) + "\n")
         await downloaderMain()
     if game == "New Horizons":
         await downloaderACNH()
@@ -120,8 +121,9 @@ async def videoDL(outfile, url):
         print(f"**`ERROR:`** {type(e).__name__} - {e}")
 
 async def downloaderACNL():
+    Style.RESET_ALL
     if os.path.exists("./files/rain/"):
-        print("If there are audio files in the 'files/[weather]' folders, " + c("this may not work") + ". Please make sure there are " + b("no files in them before continuing."))
+        print(Style.RESET_ALL + "If there are " + b("audio files") + " in the 'files/[weather]' folders, " + c("this may not work") + ". Please make sure there are " + b("no files in them before continuing."))
 
     for i in range(13):
         await videoDL(outfile = f"./files/rain/{i}a.mp3", url = f"https://cdn.glitch.com/a032b7da-b36c-4292-9322-7d4c98be233b%2FRainNewLeaf_{i}AM.mp3")
@@ -176,16 +178,17 @@ async def downloaderACNL():
     print(c("Done downloading!") + " Your " + b("music") + " should start quickly!\n\n")
 
 async def downloaderACNH():
+    Style.RESET_ALL
     if os.path.exists("./files/rain/"):
-        print("If there are audio files in the 'files/[weather]' folders, this may not work. Please make sure there are no files in them before continuing.")
+        print(Style.RESET_ALL + "If there are " + b("audio files") + " in the 'files/[weather]' folders, " + c("this may not work") + ". Please make sure there are " + b("no files in them before continuing."))
 
     for i in range(13):
         await videoDL(outfile = f"./files/rain/{i}a.mp3", url = f"https://cdn.glitch.com/a032b7da-b36c-4292-9322-7d4c98be233b%2FRainNewHorizons_{i}AM.mp3")
-        print(f"Downloading Rain ({i}AM)...")
+        print("Downloading " + b("Rain ") + "(" + b(str(i)) + ")...")
         os.rename(f"./files/rain/{i}a.mp3", f"./files/rain/{i}.mp3")
     for i in range(13):
         await videoDL(outfile = f"./files/rain/{i + 12}p.mp3", url = f"https://cdn.glitch.com/a032b7da-b36c-4292-9322-7d4c98be233b%2FRainNewHorizons_{i}PM.mp3")
-        print(f"Downloading Rain ({i + 12}PM)...")
+        print("Downloading " + b("Rain ") + "(" + b(str(i + 12)) + ")...")
         os.rename(f"./files/rain/{i + 12}p.mp3", f"./files/rain/{i + 12}.mp3")
 
     downloaderRen(weather = "rain")
@@ -199,11 +202,11 @@ async def downloaderACNH():
 
     for i in range(13):
         await videoDL(outfile = f"./files/clear/{i}a.mp3", url = f"https://cdn.glitch.com/a032b7da-b36c-4292-9322-7d4c98be233b%2FNormalNewHorizons_{i}AM.mp3")
-        print(f"Downloading Clear ({i}AM)...")
+        print("Downloading " + b("Clear ") + "(" + b(str(i)) + ")...")
         os.rename(f"./files/clear/{i}a.mp3", f"./files/clear/{i}.mp3")
     for i in range(13):
         await videoDL(outfile = f"./files/clear/{i + 12}p.mp3", url = f"https://cdn.glitch.com/a032b7da-b36c-4292-9322-7d4c98be233b%2FNormalNewHorizons_{i}PM.mp3")
-        print(f"Downloading Clear ({i + 12}PM)...")
+        print("Downloading " + b("Clear ") + "(" + b(str(i + 12)) + ")...")
         os.rename(f"./files/clear/{i + 12}p.mp3", f"./files/clear/{i + 12}.mp3")
 
     downloaderRen(weather = "clear")
@@ -217,18 +220,18 @@ async def downloaderACNH():
 
     for i in range(13):
         await videoDL(outfile = f"./files/snow/{i}a.mp3", url = f"https://cdn.glitch.com/a032b7da-b36c-4292-9322-7d4c98be233b%2FSnowNewHorizons_{i}AM.mp3")
-        print(f"Downloading Snow ({i}AM)...")
+        print("Downloading " + b("Snow ") + "(" + b(str(i)) + ")...")
         os.rename(f"./files/snow/{i}a.mp3", f"./files/snow/{i}.mp3")
     for i in range(13):
         await videoDL(outfile = f"./files/snow/{i + 12}p.mp3", url = f"https://cdn.glitch.com/a032b7da-b36c-4292-9322-7d4c98be233b%2FSnowNewHorizons_{i}PM.mp3")
-        print(f"Downloading Snow ({i + 12}PM)...")
+        print("Downloading " + b("Snow ") + "(" + b(str(i + 12)) + ")...")
         os.rename(f"./files/snow/{i + 12}p.mp3", f"./files/snow/{i + 12}.mp3")
 
     downloaderRen(weather = "snow")
     
     await videoDL(outfile = f"./files/snow/12.mp3", url = f"https://cdn.glitch.com/a032b7da-b36c-4292-9322-7d4c98be233b%2FSnowNewHorizons_12PM.mp3")
 
-    print("Done downloading! Your music should start quickly!\n\n")
+    print(c("Done downloading!") + " Your " + b("music") + " should start quickly!\n\n")
 
 def downloaderRen(weather):
     os.remove(f"./files/{weather}/0.mp3")
@@ -256,7 +259,7 @@ if __name__ == "__main__":
         loop.run_until_complete(downloaderACNH())
         loop.run_until_complete(downloaderACNL())
     except KeyboardInterrupt:
-        print("\n\nExiting program...")
+        print(c("\n\nExiting program..."))
         try:
             sys.exit(0)
         except SystemExit:
