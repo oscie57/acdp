@@ -8,10 +8,11 @@ You can only have one OST downloaded at a time to save space.
 
 Here is a video demonstrating how to use: https://youtu.be/uTfuLiuBtt8
 ## Space Requirements
-| Game         | Space  | Reason? |
+| Game         | Space  | Notes   |
 | ------------ | ------ | ------- |
-| New Leaf     | ~1.8GB | Currently where I get the music from, New Leaf's Clear audio tracks are 30 minutes. It is annoying since it means weather wont be able to change as often for it. |
-| New Horizons | ~500MB | No |
+| New Leaf     | ~120MB | None    |
+| New Horizons | ~180MB | None    |
+| City Folk    | ~130MB | This includes `Animal Crossing: Wild World` for DS and `Animal Crossing: Let's go to the City` for Wii |
 ## Set-up
 1. Make sure you have Python installed! (This was tested on Python 3.8)
 2. Run `pip install -r requirements.txt` to install the required packages.
