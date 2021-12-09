@@ -4,6 +4,7 @@ from datetime import datetime
 from pydub import AudioSegment
 from pydub.playback import play
 from colorama import init, Fore, Back, Style
+from timer_py import Timer
 
 def reminder():
     for i in range(500000):
@@ -29,6 +30,9 @@ def c(text: str):
     return Fore.CYAN + text + Style.RESET_ALL
 
 print("Welcome to the " + p("Animal Crossing Dynamic Player") + "!\nThe " + p("ACDP") + " lets you listen to " + g("Animal Crossing: New Horizons") + " (and other games') music based around the " + b("weather") +  " and " + b("time") + " around you.")
+
+timer = Timer('Timer')
+timer.start()
 
 area = str(os.getenv("AREA"))
 games = [
@@ -92,7 +96,7 @@ async def gamecheck():
 
         playcount = playcount + 1
         song = AudioSegment.from_mp3(dir)
-        song = song - 15
+        song = song - 30
         play(song)
 
         
@@ -234,8 +238,11 @@ if __name__ == "__main__":
         loop.run_until_complete(downloaderACNL())
         loop.run_until_complete(downloaderACCF())
     except KeyboardInterrupt:
-        print(c("\n\nExiting program..."))
+        print(c("\n\nExiting program...\n"))
         print("While using this app, you listened to the music " + b(str(playcount)) + " times!")
+
+        minutes = timer.elapsed(print=False) / 60
+        print("You also listened for " + b(str(int(timer.elapsed(print=False)))) + f" seconds! ({b(str(int(minutes)))} Minutes)")
         try:
             sys.exit(0)
         except SystemExit:
