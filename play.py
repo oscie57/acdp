@@ -96,7 +96,7 @@ async def gamecheck():
 
         playcount = playcount + 1
         song = AudioSegment.from_mp3(dir)
-        song = song - 30
+        song = song - 15
         play(song)
 
         

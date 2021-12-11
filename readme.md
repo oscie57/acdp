@@ -20,9 +20,10 @@ Here is a video demonstrating how to use: https://youtu.be/uTfuLiuBtt8
 4. Inside that file, add `AREA=` and put your area afterwards.
 For example: `AREA=Madrid, Spain`
 5. Make sure you have `.env` and `play.py` in the **same folder!**
+6. Run `python3 play.py` (or `py play.py` on Windows) and it should run!
 
 That's it, you're all ready to go!
 ## Bugs!
 If you have any bugs, please report them at the [issues page](https://github.com/scor57/ACDP/issues)!
 ## Why use this / Use-Cases
-Apparently I have to clarify this. This can be used to play music in the background while studying, working, or doing anything really, that was the main intention.
+Apparently I have to clarify this. This can be used to play music in the background while studying, sleeping, working, or doing anything really, that was the main intention.
