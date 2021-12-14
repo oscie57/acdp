@@ -6,15 +6,7 @@ from pydub.playback import play
 from colorama import init, Fore, Back, Style
 from timer_py import Timer
 
-def reminder():
-    for i in range(500000):
-        print("Remember to add colours to ACNH Downloader")
-        time.sleep(5)
-    sys.exit(0)
-
 init()
-
-#reminder() # comment this line out to stop
 
 load_dotenv()
 
