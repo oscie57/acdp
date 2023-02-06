@@ -53,13 +53,13 @@ def filecheck():
         sys.exit(0)
     
 async def getweather():
-    client = python_weather.Client(format=python_weather.IMPERIAL)
-    weather = await client.find(area)
+    async with python_weather.Client(format=python_weather.IMPERIAL) as client:
+        weather = await client.get(area)
 
-    global sky
-    sky = weather.current.sky_text
+        global sky
+        sky = weather.current.description
 
-    await client.close()
+        await client.close()
 
 
 async def gamecheck():
