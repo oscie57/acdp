@@ -222,13 +222,8 @@ async def downloaderACCF():
 
 if __name__ == "__main__":
     try:
-        loop = asyncio.get_event_loop()
-        loop.run_until_complete(getweather())
-        loop.run_until_complete(gamecheck())
-        loop.run_until_complete(downloaderMain())
-        loop.run_until_complete(downloaderACNH())
-        loop.run_until_complete(downloaderACNL())
-        loop.run_until_complete(downloaderACCF())
+        asyncio.run(getweather())
+        asyncio.run(gamecheck())
     except KeyboardInterrupt:
         print(c("\n\nExiting program...\n"))
         print("While using this app, you listened to the music " + b(str(playcount)) + " times!")
