@@ -61,6 +61,20 @@ async def videoDL(outfile, url):
         print(f"**`ERROR:`** {type(e).__name__} - {e}")
 
 
+def pocketcalc(hour:str):
+
+    if hour == "00" or hour == "01" or hour == "02" or hour == "03" or hour == "04" or hour == "22" or hour == "23":
+        return "night"
+    elif hour == "05" or hour == "06" or hour == "07" or hour == "08" or hour == "09" or hour == "10" or hour == "11":
+        return "morning"
+    elif hour == "12" or hour == "13" or hour == "14" or hour == "15" or hour == "16":
+        return "day"
+    elif hour == "17" or hour == "18" or hour == "19" or hour == "20" or hour == "21":
+        return "evening"
+    else:
+        return "campsite"
+
+
 async def getweather():
     async with python_weather.Client(format=python_weather.IMPERIAL) as client:
         weather = await client.get(area)
@@ -104,7 +118,10 @@ async def gamecheck():
 
         print(Style.RESET_ALL + "[" + datetime.now().strftime(c('%H:%M - %d/%m')) + "] " + b(sky) + Fore.YELLOW)
 
-        dir = f"./files/{gameweather}/{gametime}.mp3"
+        if game == "Animal Crossing: Pocket Camp":
+            dir = f"./files/{pocketcalc(gametime)}.mp3"
+        else:
+            dir = f"./files/{gameweather}/{gametime}.mp3"
 
         playcount = playcount + 1
         song = AudioSegment.from_mp3(dir)
@@ -152,8 +169,6 @@ async def downloader_game(code:str):
 
     print(Style.RESET_ALL + "\n\nDownload started for " + g(game) + "!\n")
 
-    print(type)
-
     Style.RESET_ALL
 
     if os.path.exists("./files/rain/"):
@@ -179,10 +194,14 @@ async def downloader_game(code:str):
 
     elif type == "periodic":
 
-        ""
+        tracklist = ["campsite", "morning", "day", "evening", "night"]
+
+        for track in tracklist:
+            await videoDL(outfile = f"./files/{track}.mp3", url = f"https://cloud.oscie.net/acdp/{code}/{track}.mp3")
+            print("Downloading " + b(track.capitalize()) + "...")
 
     else:
-        
+
         for i in range (24):
             if len(str(i)) == 1:
                 num = f"0{i}"

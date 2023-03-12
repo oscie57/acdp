@@ -30,15 +30,16 @@
             "code": "ac",
             "size": "130 MB",
             "type": "norain"
-        }
-    ],
-    "unsupported": [
+        },
         {
             "name": "Animal Crossing: Pocket Camp",
             "shortname": "Pocket Camp",
             "code": "acpc",
-            "size": "Unknown",
+            "size": "40 MB",
             "type": "periodic"
         }
+    ],
+    "unsupported": [
+        
     ]
 }
