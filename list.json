@@ -1,0 +1,41 @@
+{
+    "available": [
+        {
+            "name": "Animal Crossing: New Leaf",
+            "shortname": "New Leaf",
+            "code": "acnl",
+            "size": "120 MB",
+            "type": "normal"
+        }
+    ],
+    "unsupported": [
+        {
+            "name": "Animal Crossing",
+            "shortname": "Animal Crossing",
+            "code": "ac",
+            "size": "Unknown",
+            "type": "sp1"
+        },
+        {
+            "name": "Animal Crossing: Pocket Camp",
+            "shortname": "Pocket Camp",
+            "code": "acpc",
+            "size": "Unknown",
+            "type": "sp2"
+        },
+        {
+            "name": "Animal Crossing: New Horizons",
+            "shortname": "New Horizons",
+            "code": "acnh",
+            "size": "Unknown",
+            "type": "normal"
+        },
+        {
+            "name": "Animal Crossing: City Folk",
+            "shortname": "City Folk",
+            "code": "accf",
+            "size": "Unknown",
+            "type": "normal"
+        }
+    ]
+}

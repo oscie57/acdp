@@ -17,7 +17,7 @@ Space requirements have been made dynamic, meaning they can only be viewed in th
 
 ## Set-up
 
-1. Make sure you have Python installed! (This was tested on Python 3.8)
+1. Make sure you have Python installed! (This was tested on Python 3.10)
 2. Run `pip install -r requirements.txt` to install the required packages.
 3. Create a file called `.env`
 4. Inside that file, add `AREA=` and put your area afterwards.
