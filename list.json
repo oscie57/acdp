@@ -14,14 +14,14 @@
             "shortname": "Animal Crossing",
             "code": "ac",
             "size": "Unknown",
-            "type": "sp1"
+            "type": "norain"
         },
         {
             "name": "Animal Crossing: Pocket Camp",
             "shortname": "Pocket Camp",
             "code": "acpc",
             "size": "Unknown",
-            "type": "sp2"
+            "type": "periodic"
         },
         {
             "name": "Animal Crossing: New Horizons",

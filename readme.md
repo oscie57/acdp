@@ -15,6 +15,8 @@ Here is a video demonstrating how to use: [YouTube [OUTDATED]](https://youtu.be/
 
 Space requirements have been made dynamic, meaning they can only be viewed in the program.
 
+You can also view the game list in [list.json](https://github.com/oscie57/acdp/blob/main/list.json)
+
 ## Set-up
 
 1. Make sure you have Python installed! (This was tested on Python 3.10)
