@@ -1,6 +1,13 @@
 {
     "available": [
         {
+            "name": "Animal Crossing: New Horizons",
+            "shortname": "New Horizons",
+            "code": "acnh",
+            "size": "250 MB",
+            "type": "normal"
+        },
+        {
             "name": "Animal Crossing: New Leaf",
             "shortname": "New Leaf",
             "code": "acnl",
@@ -22,13 +29,6 @@
             "code": "acpc",
             "size": "Unknown",
             "type": "periodic"
-        },
-        {
-            "name": "Animal Crossing: New Horizons",
-            "shortname": "New Horizons",
-            "code": "acnh",
-            "size": "Unknown",
-            "type": "normal"
         },
         {
             "name": "Animal Crossing: City Folk",
