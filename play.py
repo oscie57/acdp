@@ -87,12 +87,18 @@ async def gamecheck():
         print(g(game) + " has been detected, enjoy the music!\n")
 
     while True:
-        if "Rain" in sky or "rain" in sky or "rainy" in sky or "Rainy" in sky or "Mist" in sky or "mist" in sky:
-            gameweather = "rain"
-        elif "snow" in sky or "Snow" in sky or "snowy" in sky or "Snowy" in sky:
-            gameweather = "snow"
+        if game == "Animal Crossing":
+            if "snow" in sky or "Snow" in sky or "snowy" in sky or "Snowy" in sky:
+                gameweather = "snow"
+            else:
+                gameweather = "clear"
         else:
-            gameweather = "clear"
+            if "Rain" in sky or "rain" in sky or "rainy" in sky or "Rainy" in sky or "Mist" in sky or "mist" in sky:
+                gameweather = "rain"
+            elif "snow" in sky or "Snow" in sky or "snowy" in sky or "Snowy" in sky:
+                gameweather = "snow"
+            else:
+                gameweather = "clear"
 
         gametime = datetime.now().strftime("%H")
 
@@ -137,6 +143,7 @@ async def downloader_game(code:str):
     for gameitem in games['available']:
         if gameitem['code'] == code:
             game = gameitem['name']
+            type = gameitem['type']
 
     for item in games['unsupported']:
         if code == item['code']:
@@ -145,34 +152,61 @@ async def downloader_game(code:str):
 
     print(Style.RESET_ALL + "\n\nDownload started for " + g(game) + "!\n")
 
+    print(type)
+
     Style.RESET_ALL
 
     if os.path.exists("./files/rain/"):
         print(Style.RESET_ALL + "If there are " + b("audio files") + " in the 'files/[weather]' folders, " + c("this may not work") + ".\nPlease make sure there are " + b("no files in them before continuing.") + "\nThis may take a while, please wait...\n")
 
-    for i in range (24):
-        if len(str(i)) == 1:
-            num = f"0{i}"
-        else:
-            num = i
-        await videoDL(outfile = f"./files/rain/{num}.mp3", url = f"https://cloud.oscie.net/acdp/{code}/rain/{num}.mp3")
-        print("Downloading " + b("Rain ") + "(" + b(str(i)) + ")...")
+    if type == "norain":
 
-    for i in range (24):
-        if len(str(i)) == 1:
-            num = f"0{i}"
-        else:
-            num = i
-        await videoDL(outfile = f"./files/snow/{num}.mp3", url = f"https://cloud.oscie.net/acdp/{code}/snow/{num}.mp3")
-        print("Downloading " + b("Snow ") + "(" + b(str(i)) + ")...")
+        for i in range (24):
+            if len(str(i)) == 1:
+                num = f"0{i}"
+            else:
+                num = i
+            await videoDL(outfile = f"./files/snow/{num}.mp3", url = f"https://cloud.oscie.net/acdp/{code}/snow/{num}.mp3")
+            print("Downloading " + b("Snow ") + "(" + b(str(i)) + ")...")
 
-    for i in range (24):
-        if len(str(i)) == 1:
-            num = f"0{i}"
-        else:
-            num = i
-        await videoDL(outfile = f"./files/clear/{num}.mp3", url = f"https://cloud.oscie.net/acdp/{code}/clear/{num}.mp3")
-        print("Downloading " + b("Clear ") + "(" + b(str(i)) + ")...")
+        for i in range (24):
+            if len(str(i)) == 1:
+                num = f"0{i}"
+            else:
+                num = i
+            await videoDL(outfile = f"./files/clear/{num}.mp3", url = f"https://cloud.oscie.net/acdp/{code}/clear/{num}.mp3")
+            print("Downloading " + b("Clear ") + "(" + b(str(i)) + ")...")
+
+    elif type == "periodic":
+
+        ""
+
+    else:
+        
+        for i in range (24):
+            if len(str(i)) == 1:
+                num = f"0{i}"
+            else:
+                num = i
+            await videoDL(outfile = f"./files/rain/{num}.mp3", url = f"https://cloud.oscie.net/acdp/{code}/rain/{num}.mp3")
+            print("Downloading " + b("Rain ") + "(" + b(str(i)) + ")...")
+
+        for i in range (24):
+            if len(str(i)) == 1:
+                num = f"0{i}"
+            else:
+                num = i
+            await videoDL(outfile = f"./files/snow/{num}.mp3", url = f"https://cloud.oscie.net/acdp/{code}/snow/{num}.mp3")
+            print("Downloading " + b("Snow ") + "(" + b(str(i)) + ")...")
+
+        for i in range (24):
+            if len(str(i)) == 1:
+                num = f"0{i}"
+            else:
+                num = i
+            await videoDL(outfile = f"./files/clear/{num}.mp3", url = f"https://cloud.oscie.net/acdp/{code}/clear/{num}.mp3")
+            print("Downloading " + b("Clear ") + "(" + b(str(i)) + ")...")
+
 
     with open("./files/name.txt", "x") as f:
         f.write(game)
