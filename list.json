@@ -5,14 +5,24 @@
             "shortname": "New Horizons",
             "code": "acnh",
             "size": "250 MB",
-            "type": "normal"
+            "type": "normal",
+            "roost": "false"
         },
         {
             "name": "Animal Crossing: New Leaf",
             "shortname": "New Leaf",
             "code": "acnl",
             "size": "120 MB",
-            "type": "normal"
+            "type": "normal",
+            "roost": "false"
+        },
+        {
+            "name": "Animal Crossing: City Folk",
+            "shortname": "City Folk",
+            "code": "accf",
+            "size": "230 MB",
+            "type": "normal",
+            "roost": "true"
         }
     ],
     "unsupported": [
@@ -29,13 +39,6 @@
             "code": "acpc",
             "size": "Unknown",
             "type": "periodic"
-        },
-        {
-            "name": "Animal Crossing: City Folk",
-            "shortname": "City Folk",
-            "code": "accf",
-            "size": "Unknown",
-            "type": "normal"
         }
     ]
 }
