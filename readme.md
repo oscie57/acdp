@@ -29,6 +29,12 @@ For example: `AREA=Madrid, Spain`
 
 That's it, you're all ready to go!
 
+## File list
+
+Upon downloading, feel free to delete the `README.md`, `list.json`, and `.gitignore` files.
+
+You only need `.env` and `play.py` to use (you will need `requirements.txt` to set up, but you can remove it later).
+
 ## Bugs
 
 If you have any bugs, please report them at the [issues page](https://github.com/oscie57/ACDP/issues)!
