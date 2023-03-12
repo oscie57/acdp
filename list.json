@@ -23,16 +23,16 @@
             "size": "230 MB",
             "type": "normal",
             "roost": "true"
-        }
-    ],
-    "unsupported": [
+        },
         {
             "name": "Animal Crossing",
             "shortname": "Animal Crossing",
             "code": "ac",
             "size": "Unknown",
             "type": "norain"
-        },
+        }
+    ],
+    "unsupported": [
         {
             "name": "Animal Crossing: Pocket Camp",
             "shortname": "Pocket Camp",
