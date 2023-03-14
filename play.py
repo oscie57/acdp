@@ -23,6 +23,11 @@ def c(text: str):
     return Fore.CYAN + text + Style.RESET_ALL
 
 
+if not os.path.exists(".env"):
+    print("\nTo run, we need to use " + b("dotenv") + " to get your location. There should be a file called " + b("'.env'") + "in the same directory as " + b("'play.py'") + ". Read the README.md for more information.")
+    sys.exit(0)
+
+
 timer = Timer('Timer')
 timer.start()
 
@@ -51,12 +56,6 @@ def filecheck():
 
     if not os.path.exists("./files/clear/"):
         os.mkdir("./files/clear/")
-
-    if not os.path.exists(".env"):
-        print("\n\nTo run, we need to use " + b("dotenv") + " to get your location. There should be a file called " + b("'.env'") + "in the same directory as " + b("'play.py'") + ", please add the following:\n")
-        print(b("AREA") + "=" + b("town"))
-        print("But replace " + b("town") + " with your town, for example: '" + b("AREA=Sutton, London") + "'\n")
-        sys.exit(0)
 
 
 async def videoDL(outfile, url):
