@@ -24,10 +24,15 @@ You can also view the game list in [list.json](https://github.com/oscie57/acdp/b
 3. Create a file called `.env`
 4. Inside that file, add `AREA=` and put your area afterwards.
 For example: `AREA=Madrid, Spain`
-5. Make sure you have `.env` and `play.py` in the **same folder!**
-6. Run `python3 play.py` (or `py play.py` on Windows) and it should run!
+5. After that, on the next line, add `ROOST=` and set it to "True" or "False".
+6. Make sure you have `.env` and `play.py` in the **same folder!**
+7. Run `python3 play.py` (or `py play.py` on Windows) and it should run!
 
 That's it, you're all ready to go!
+
+## The Roost
+
+Currently, some games that support The Roost in-game will have a random chance of playing their song (1-in-1000). As long as the game is supported (check `list.json`) and ROOST is set to True in `.env`, it might play.
 
 ## File list
 

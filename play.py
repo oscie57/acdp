@@ -1,4 +1,4 @@
-import os, python_weather, asyncio, sys, time, aiohttp, requests
+import os, python_weather, asyncio, sys, time, aiohttp, requests, random
 from dotenv import load_dotenv
 from datetime import datetime
 from pydub import AudioSegment
@@ -27,7 +27,14 @@ timer = Timer('Timer')
 timer.start()
 
 area = str(os.getenv("AREA"))
+roost = str(os.getenv("ROOST"))
 games = requests.get(f"https://cloud.oscie.net/acdp/list.json").json()
+
+
+if roost == "True" and os.path.exists("./files/roost.mp3"):
+    playroost = True
+else:
+    playroost = False
 
 
 def filecheck():
@@ -101,6 +108,7 @@ async def gamecheck():
         print(g(game) + " has been detected, enjoy the music!\n")
 
     while True:
+
         if game == "Animal Crossing":
             if "snow" in sky or "Snow" in sky or "snowy" in sky or "Snowy" in sky:
                 gameweather = "snow"
@@ -121,7 +129,14 @@ async def gamecheck():
         if game == "Animal Crossing: Pocket Camp":
             dir = f"./files/{pocketcalc(gametime)}.mp3"
         else:
-            dir = f"./files/{gameweather}/{gametime}.mp3"
+            if playroost == True:
+                rack = random.randint(1, 1000)
+                if rack == 5:
+                    dir = "./files/roost.mp3"
+                else:
+                    dir = f"./files/{gameweather}/{gametime}.mp3"
+            else:
+                dir = f"./files/{gameweather}/{gametime}.mp3"
 
         playcount = playcount + 1
         song = AudioSegment.from_mp3(dir)
@@ -161,6 +176,7 @@ async def downloader_game(code:str):
         if gameitem['code'] == code:
             game = gameitem['name']
             type = gameitem['type']
+            roos = gameitem['roost']
 
     for item in games['unsupported']:
         if code == item['code']:
@@ -226,6 +242,9 @@ async def downloader_game(code:str):
             await videoDL(outfile = f"./files/clear/{num}.mp3", url = f"https://cloud.oscie.net/acdp/{code}/clear/{num}.mp3")
             print("Downloading " + b("Clear ") + "(" + b(str(i)) + ")...")
 
+    if roos == True:
+        await videoDL(outfile = "./files/roost.mp3", url = f"https://cloud.oscie.net/acdp/{code}/roost.mp3")
+        print("Downloading " + b("Roost") + "...")
 
     with open("./files/name.txt", "x") as f:
         f.write(game)
