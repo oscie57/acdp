@@ -6,7 +6,7 @@
             "code": "acnh",
             "size": "250 MB",
             "type": "normal",
-            "roost": false
+            "roost": true
         },
         {
             "name": "Animal Crossing: New Leaf",
@@ -14,7 +14,7 @@
             "code": "acnl",
             "size": "120 MB",
             "type": "normal",
-            "roost": false
+            "roost": true
         },
         {
             "name": "Animal Crossing: City Folk",
