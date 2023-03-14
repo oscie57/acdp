@@ -116,10 +116,10 @@ async def gamecheck():
             else:
                 gameweather = "clear"
         else:
-            if "Rain" in sky or "rain" in sky or "rainy" in sky or "Rainy" in sky or "Mist" in sky or "mist" in sky:
-                gameweather = "rain"
-            elif "snow" in sky or "Snow" in sky or "snowy" in sky or "Snowy" in sky:
+            if "snow" in sky or "Snow" in sky or "snowy" in sky or "Snowy" in sky:
                 gameweather = "snow"
+            elif "Rain" in sky or "rain" in sky or "rainy" in sky or "Rainy" in sky or "Mist" in sky or "mist" in sky:
+                gameweather = "rain"
             else:
                 gameweather = "clear"
 
