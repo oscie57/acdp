@@ -26,8 +26,10 @@ def c(text: str):
 timer = Timer('Timer')
 timer.start()
 
+volume = int(os.getenv("VOLUME"))
 area = str(os.getenv("AREA"))
 roost = str(os.getenv("ROOST"))
+
 games = requests.get(f"https://cloud.oscie.net/acdp/list.json").json()
 
 
@@ -140,7 +142,7 @@ async def gamecheck():
 
         playcount = playcount + 1
         song = AudioSegment.from_mp3(dir)
-        song = song - 15
+        song = song - volume
 
         play(song)
 
