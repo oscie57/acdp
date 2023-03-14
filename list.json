@@ -6,7 +6,7 @@
             "code": "acnh",
             "size": "250 MB",
             "type": "normal",
-            "roost": "false"
+            "roost": false
         },
         {
             "name": "Animal Crossing: New Leaf",
@@ -14,7 +14,7 @@
             "code": "acnl",
             "size": "120 MB",
             "type": "normal",
-            "roost": "false"
+            "roost": false
         },
         {
             "name": "Animal Crossing: City Folk",
@@ -22,21 +22,23 @@
             "code": "accf",
             "size": "230 MB",
             "type": "normal",
-            "roost": "true"
+            "roost": true
         },
         {
             "name": "Animal Crossing",
             "shortname": "Animal Crossing",
             "code": "ac",
             "size": "130 MB",
-            "type": "norain"
+            "type": "norain",
+            "roost": false
         },
         {
             "name": "Animal Crossing: Pocket Camp",
             "shortname": "Pocket Camp",
             "code": "acpc",
             "size": "40 MB",
-            "type": "periodic"
+            "type": "periodic",
+            "roost": false
         }
     ],
     "unsupported": [
