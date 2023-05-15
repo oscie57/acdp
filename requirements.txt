@@ -5,4 +5,4 @@ python-dotenv==1.0.0
 python_weather==0.4.3
 requests==2.28.1
 timer.py==2.2.0
-timer_py==2.2.0
+timer_py==2.4.1
