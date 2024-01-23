@@ -28,3 +28,16 @@ def pocketcalc(hour:str):
             return "evening"
         case _:
             return "campsite"
+
+keywords_snow = [
+    "snow",
+    "blizzard",
+    "snowstorm",
+]
+keywords_rain = [
+    "rain",
+    "mist",
+    "shower",
+    "drizzle",
+    "mist"
+]

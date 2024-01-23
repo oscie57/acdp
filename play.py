@@ -8,7 +8,8 @@ from timer_py import Timer
 
 from common import (
     b, g, p, o, c, y,
-    pocketcalc
+    pocketcalc,
+    keywords_rain, keywords_snow
 )
 
 init()
@@ -93,29 +94,30 @@ async def gamecheck():
 
     while True:
         sky = await getweather()
+        sky2 = sky.lower()
 
         if game == "Animal Crossing":
-            if "snow" in sky or "Snow" in sky or "snowy" in sky or "Snowy" in sky:
+            if any(i in sky2 for i in keywords_snow):
                 gameweather = "snow"
             else:
                 gameweather = "clear"
         else:
-            if "snow" in sky or "Snow" in sky or "snowy" in sky or "Snowy" in sky:
+            if any(i in sky2 for i in keywords_snow):
                 gameweather = "snow"
-            elif "Rain" in sky or "rain" in sky or "rainy" in sky or "Rainy" in sky or "Mist" in sky or "mist" in sky or "shower" in sky or "Shower" in sky:
+            elif any(i in sky2 for i in keywords_rain):
                 gameweather = "rain"
             else:
                 gameweather = "clear"
 
         gametime = datetime.now().strftime("%H")
 
-        print(Style.RESET_ALL + "[" + datetime.now().strftime(c('%H:%M - %d/%m')) + "] " + b(sky) + Fore.YELLOW)
+        print(Style.RESET_ALL + "[" + datetime.now().strftime(c('%H:%M - %d/%m')) + "] " + b(sky) + " - " + b(gameweather.capitalize()) + Fore.YELLOW)
 
         if game == "Animal Crossing: Pocket Camp":
             dir = f"./files/{pocketcalc(gametime)}.mp3"
         else:
             if playroost == True:
-                rack = random.randint(1, 1000)
+                rack = random.randint(1, 100)
                 if rack == 5:
                     dir = "./files/roost.mp3"
                 else:
@@ -125,7 +127,10 @@ async def gamecheck():
 
         playcount = playcount + 1
         song = AudioSegment.from_mp3(dir)
-        song = song - volume
+        if rack == 5:
+            song = song
+        else:
+            song = song - volume
 
         play(song)
 
@@ -247,7 +252,6 @@ async def downloader_game(code:str):
 async def main():
     print("\nWelcome to the " + p("Animal Crossing Dynamic Player") + "!\nThe " + p("ACDP") + " lets you listen to " + g("Animal Crossing") + " games' music based around the " + b("weather") + " and " + b("time") + " around you.\n")
 
-    await getweather()
     await gamecheck()
 
 
