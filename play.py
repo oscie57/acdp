@@ -6,21 +6,13 @@ from pydub.playback import play
 from colorama import Fore, Style, init
 from timer_py import Timer
 
+from common import (
+    b, g, p, o, c, y,
+    pocketcalc
+)
 
 init()
 load_dotenv()
-
-
-def b(text: str):
-    return Fore.BLUE + text + Style.RESET_ALL
-def g(text: str):
-    return Fore.GREEN + text + Style.RESET_ALL
-def p(text: str):
-    return Fore.MAGENTA + text + Style.RESET_ALL
-def o(text: str):
-    return Fore.ORANGE + text + Style.RESET_ALL
-def c(text: str):
-    return Fore.CYAN + text + Style.RESET_ALL
 
 
 if not os.path.exists(".env"):
@@ -35,7 +27,11 @@ volume = int(os.getenv("VOLUME"))
 area = str(os.getenv("AREA"))
 roost = str(os.getenv("ROOST"))
 
-games = requests.get(f"https://cloud.oscie.net/acdp/list.json").json()
+try:
+    games = requests.get(f"https://cloud.oscie.net/acdp/list.json", timeout=10).json()
+except:
+    print("Could not connect to the server, please try again later.")
+    sys.exit(0)
 
 
 if roost == "True" and os.path.exists("./files/roost.mp3"):
@@ -69,28 +65,15 @@ async def videoDL(outfile, url):
         print(f"**`ERROR:`** {type(e).__name__} - {e}")
 
 
-def pocketcalc(hour:str):
-
-    if hour == "00" or hour == "01" or hour == "02" or hour == "03" or hour == "04" or hour == "22" or hour == "23":
-        return "night"
-    elif hour == "05" or hour == "06" or hour == "07" or hour == "08" or hour == "09" or hour == "10" or hour == "11":
-        return "morning"
-    elif hour == "12" or hour == "13" or hour == "14" or hour == "15" or hour == "16":
-        return "day"
-    elif hour == "17" or hour == "18" or hour == "19" or hour == "20" or hour == "21":
-        return "evening"
-    else:
-        return "campsite"
-
-
 async def getweather():
     async with python_weather.Client(format=python_weather.IMPERIAL) as client:
         weather = await client.get(area)
 
-        global sky
         sky = weather.current.description
 
         await client.close()
+
+        return sky
 
 
 async def gamecheck():
@@ -109,6 +92,7 @@ async def gamecheck():
         print(g(game) + " has been detected, enjoy the music!\n")
 
     while True:
+        sky = await getweather()
 
         if game == "Animal Crossing":
             if "snow" in sky or "Snow" in sky or "snowy" in sky or "Snowy" in sky:
@@ -198,24 +182,27 @@ async def downloader_game(code:str):
                 num = f"0{i}"
             else:
                 num = i
+            print("\rDownloading " + b("Snow ") + "(" + b(str(num)) + "/24)...", end="")
             await videoDL(outfile = f"./files/snow/{num}.mp3", url = f"https://cloud.oscie.net/acdp/{code}/snow/{num}.mp3")
-            print("Downloading " + b("Snow ") + "(" + b(str(i)) + ")...")
+        print("\rDownloading " + b("Snow ") + "(" + b("24") + "/24)...Done!")
 
         for i in range (24):
             if len(str(i)) == 1:
                 num = f"0{i}"
             else:
                 num = i
+            print("\rDownloading " + b("Clear ") + "(" + b(str(num)) + "/24)...", end="")
             await videoDL(outfile = f"./files/clear/{num}.mp3", url = f"https://cloud.oscie.net/acdp/{code}/clear/{num}.mp3")
-            print("Downloading " + b("Clear ") + "(" + b(str(i)) + ")...")
+        print("\rDownloading " + b("Clear ") + "(" + b("24") + "/24)...Done!")
 
     elif type == "periodic":
 
         tracklist = ["campsite", "morning", "day", "evening", "night"]
 
         for track in tracklist:
+            print("\rDownloading Tracks (" + b(track.capitalize()) + ")...", end="")
             await videoDL(outfile = f"./files/{track}.mp3", url = f"https://cloud.oscie.net/acdp/{code}/{track}.mp3")
-            print("Downloading " + b(track.capitalize()) + "...")
+        print("\rDownloading Tracks...Done!")
 
     else:
 
@@ -224,33 +211,37 @@ async def downloader_game(code:str):
                 num = f"0{i}"
             else:
                 num = i
+            print("\rDownloading " + b("Rain ") + "(" + b(str(num)) + "/24)...", end="")
             await videoDL(outfile = f"./files/rain/{num}.mp3", url = f"https://cloud.oscie.net/acdp/{code}/rain/{num}.mp3")
-            print("Downloading " + b("Rain ") + "(" + b(str(i)) + ")...")
+        print("\rDownloading " + b("Rain ") + "(" + b("24") + "/24)...Done!")
 
         for i in range (24):
             if len(str(i)) == 1:
                 num = f"0{i}"
             else:
                 num = i
+            print("\rDownloading " + b("Snow ") + "(" + b(str(num)) + "/24)...", end="")
             await videoDL(outfile = f"./files/snow/{num}.mp3", url = f"https://cloud.oscie.net/acdp/{code}/snow/{num}.mp3")
-            print("Downloading " + b("Snow ") + "(" + b(str(i)) + ")...")
+        print("\rDownloading " + b("Snow ") + "(" + b("24") + "/24)...Done!")
 
         for i in range (24):
             if len(str(i)) == 1:
                 num = f"0{i}"
             else:
                 num = i
+            print("\rDownloading " + b("Clear ") + "(" + b(str(num)) + "/24)...", end="")
             await videoDL(outfile = f"./files/clear/{num}.mp3", url = f"https://cloud.oscie.net/acdp/{code}/clear/{num}.mp3")
-            print("Downloading " + b("Clear ") + "(" + b(str(i)) + ")...")
+        print("\rDownloading " + b("Clear ") + "(" + b("24") + "/24)...Done!")
 
     if roos == True:
+        print("\rDownloading " + b("Roost") + "...", end="")
         await videoDL(outfile = "./files/roost.mp3", url = f"https://cloud.oscie.net/acdp/{code}/roost.mp3")
-        print("Downloading " + b("Roost") + "...")
+        print("\rDownloading " + b("Roost") + "...Done!")
 
     with open("./files/name.txt", "x") as f:
         f.write(game)
 
-    print(c("Done downloading") + "! Your " + b("music") + " should start quickly!\n")
+    print(c("Download complete") + ", your " + b("music") + " should start quickly!\n")
 
 
 async def main():
