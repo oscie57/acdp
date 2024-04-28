@@ -13,16 +13,19 @@ Here is a video demonstrating how to use: [YouTube [OUTDATED]](https://youtu.be/
 
 ## Which version should I use?
 
-ACDP currently has two available versions:
+ACDP currently has three available versions:
 
 - a download version (`play.py`)
 - a streamed version (`network.py`)
+- an iOS version (via Shortcuts)
 
 The download version downloads the music to your computer for fast and easy listening, however, it could take a while. You only need to download once. As long as the downloads are available (you can check any time at [oscie cloud](https://cloud.oscie.net)), there should be no issues.
 
-The streamed version streams the music directly. This is a new feature, and may not work 100% of the time. If anything happens, please let me know in my [Discord server](https://discord.ggymb84qM54A) in #acdp, or create an issue on [GitHub](https://github.com/oscie57/acdp/issues).
+The streamed version streams the music directly. This is a new feature, and may not work 100% of the time. If anything happens, please let me know in my [Discord server](https://discord.gg/ymb84qM54A) in #acdp, or create an issue on [GitHub](https://github.com/oscie57/acdp/issues).
 
-Both versions require the configuration file to be filled out properly, so make sure to read below.
+The iOS version streams the music directly and is accessed via the Shortcuts app. This is brand new and is barely tested, so it is not public. If you'd like to use it, please join my [Discord server](https://discord.gg/ymb84qM54A) and ask in #acdp. It currently only supports games of `normal` type (New Leaf, New Horizons, City Folk), and likely will only ever.
+
+Both the download and streamed versions require the configuration file to be filled out properly, so make sure to read below.
 
 ## Space Requirements
 
@@ -74,7 +77,7 @@ You only need `.env` and `play.py` to use (you will need `requirements.txt` to s
 
 ## Bugs
 
-If you have any bugs, please report them at the [issues page](https://github.com/oscie57/ACDP/issues) or in `#acdp` at my [Discord server](https://discord.ggymb84qM54A)!
+If you have any bugs, please report them at the [issues page](https://github.com/oscie57/ACDP/issues) or in `#acdp` at my [Discord server](https://discord.gg/ymb84qM54A)!
 
 ## Why use this / Use-Cases
 
