@@ -7,3 +7,10 @@ list.json
 name.txt
 selection.json
 list.json
+
+*.exe
+*.bat
+.vscode/
+config.json
+include
+lib
