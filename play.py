@@ -67,10 +67,10 @@ async def videoDL(outfile, url):
 
 
 async def getweather():
-    async with python_weather.Client(format=python_weather.IMPERIAL) as client:
+    async with python_weather.Client(unit=python_weather.IMPERIAL) as client:
         weather = await client.get(area)
 
-        sky = weather.current.description
+        sky = weather.description
 
         await client.close()
 
