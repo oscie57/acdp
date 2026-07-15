@@ -30,7 +30,7 @@ area = str(os.getenv("AREA"))
 roost = str(os.getenv("ROOST"))
 
 try:
-    games = requests.get(f"https://cloud.oscie.net/acdp/list.json", timeout=10).json()
+    games = requests.get(f"https://cloud.oscie.net/acdp/list.json", timeout=30).json()
 except:
     print("Could not connect to the server, please try again later.")
     sys.exit(0)
